@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2011/01/fabric">
+  <xsd:element name="ServiceManifest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ServiceTypes">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="StatelessServiceType">
+                <xsd:complexType>
+                  <xsd:attribute name="ServiceTypeName" type="xsd:string" use="required" />
+                  <xsd:attribute name="UseImplicitHost" type="xsd:boolean" use="required" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="CodePackage">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="EntryPoint">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ContainerHost">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ImageName" type="xsd:string" />
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="Name" type="xsd:string" use="required" />
+            <xsd:attribute name="Version" type="xsd:string" use="required" />
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="ConfigPackage">
+          <xsd:complexType>
+            <xsd:attribute name="Name" type="xsd:string" use="required" />
+            <xsd:attribute name="Version" type="xsd:string" use="required" />
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Resources">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Endpoints">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Endpoint">
+                      <xsd:complexType>
+                        <xsd:attribute name="Name" type="xsd:string" use="required" />
+                        <xsd:attribute name="UriScheme" type="xsd:string" use="required" />
+                        <xsd:attribute name="Port" type="xsd:unsignedByte" use="required" />
+                        <xsd:attribute name="Protocol" type="xsd:string" use="required" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="Name" type="xsd:string" use="required" />
+      <xsd:attribute name="Version" type="xsd:string" use="required" />
+    </xsd:complexType>
+  </xsd:element>
+</xs:schema>

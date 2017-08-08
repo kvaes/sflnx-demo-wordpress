@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2011/01/fabric">
+  <xsd:element name="ApplicationManifest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Parameters">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Parameter">
+                <xsd:complexType>
+                  <xsd:attribute name="Name" type="xsd:string" use="required" />
+                  <xsd:attribute name="DefaultValue" type="xsd:byte" use="required" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="ServiceManifestImport">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ServiceManifestRef">
+                <xsd:complexType>
+                  <xsd:attribute name="ServiceManifestName" type="xsd:string" use="required" />
+                  <xsd:attribute name="ServiceManifestVersion" type="xsd:string" use="required" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="ConfigOverrides" />
+              <xsd:element name="Policies">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ContainerHostPolicies">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="PortBinding">
+                            <xsd:complexType>
+                              <xsd:attribute name="ContainerPort" type="xsd:unsignedByte" use="required" />
+                              <xsd:attribute name="EndpointRef" type="xsd:string" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="CodePackageRef" type="xsd:string" use="required" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="DefaultServices">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Service">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="StatelessService">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="SingletonPartition" />
+                        </xsd:sequence>
+                        <xsd:attribute name="ServiceTypeName" type="xsd:string" use="required" />
+                        <xsd:attribute name="InstanceCount" type="xsd:string" use="required" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="Name" type="xsd:string" use="required" />
+                  <xsd:attribute name="ServicePackageActivationMode" type="xsd:string" use="required" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="ApplicationTypeName" type="xsd:string" use="required" />
+      <xsd:attribute name="ApplicationTypeVersion" type="xsd:string" use="required" />
+    </xsd:complexType>
+  </xsd:element>
+</xs:schema>
