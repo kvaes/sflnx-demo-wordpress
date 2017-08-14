@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest ApplicationTypeName="WordpressType"
-                     ApplicationTypeVersion="1.0.0"
+                     ApplicationTypeVersion="1.0.1"
                      xmlns="http://schemas.microsoft.com/2011/01/fabric"
                      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -11,11 +11,13 @@
        should match the Name and Version attributes of the ServiceManifest element defined in the 
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="WordpressServicePkg" ServiceManifestVersion="1.0.0" />
+    <ServiceManifestRef ServiceManifestName="WordpressServicePkg" ServiceManifestVersion="1.0.1" />
     <ConfigOverrides />
     <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
         <PortBinding ContainerPort="80" EndpointRef="WordpressServiceTypeEndpoint"/>
+        <Volume Source="/tmp/wordpress" Destination="/var/www/html"></Volume>
+        <!--<Volume Source="wordpressdata" Destination="/var/www/html" Driver="sf"></Volume>-->
       </ContainerHostPolicies>
     </Policies>
   </ServiceManifestImport>

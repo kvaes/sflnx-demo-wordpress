@@ -37,6 +37,13 @@
                               <xsd:attribute name="EndpointRef" type="xsd:string" use="required" />
                             </xsd:complexType>
                           </xsd:element>
+                          <xsd:element name="Volume">
+                            <xsd:complexType>
+                              <xsd:attribute name="Source" type="xsd:string" use="required" />
+                              <xsd:attribute name="Destination" type="xsd:string" use="required" />
+                              <xsd:attribute name="Driver" type="xsd:string" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
                         </xsd:sequence>
                         <xsd:attribute name="CodePackageRef" type="xsd:string" use="required" />
                       </xsd:complexType>
